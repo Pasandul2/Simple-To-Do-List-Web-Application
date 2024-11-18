@@ -159,6 +159,19 @@ function createTaskElement(task) {
     return li;
 }
 
+// Capitalize the first letter in input fields
+document.querySelectorAll('input[type="text"], textarea').forEach((input) => {
+    input.addEventListener('input', function () {
+        const value = input.value;
+        if (value.length > 0) {
+            input.value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    });
+});
+
+
+
+
 // Form Submit Handler
 taskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
