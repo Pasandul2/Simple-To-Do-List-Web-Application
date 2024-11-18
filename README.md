@@ -19,8 +19,8 @@ This repository contains a web-based To-Do List application built using **HTML, 
 
 ## Demo
 
-![To-Do List UI](https://via.placeholder.com/800x400)  
-*(Replace this placeholder with an actual screenshot of your application)*
+![CaptureToDo](https://github.com/user-attachments/assets/b7aff62f-e62a-4838-b623-8c3a05fdb31a)
+
 
 ---
 
@@ -81,27 +81,32 @@ You can either double-click the index.html file or serve it using an HTTP server
 
 ## Assumptions & Simplifications
 
-#### Data Storage:Tasks are stored in memory in the backend for simplicity. A database like MongoDB or SQLite can be integrated for full persistence.
-#### CORS Configuration: Designed for local communication between frontend and backend only.
-#### Styling: Basic CSS is used. Feel free to enhance the design.
+**Data Storage**:Tasks are stored in memory in the backend for simplicity. A database like MongoDB or SQLite can be integrated for full persistence. 
+
+**CORS Configuration**: Designed for local communication between frontend and backend only.  
+
+**Styling**: Basic CSS is used. Feel free to enhance the design.  
 
 ## Project Structure
 
-Simple-To-Do-List-Web-Application/
-│
-├── backend/
-│   ├── server.js         # Node.js backend
-│   └── package.json      # Backend dependencies
-│
-├── frontend/
-│   ├── index.html        # HTML file for the frontend
-│   ├── style.css         # Stylesheet
-│   └── script.js         # JavaScript for UI interactions
-│
-└── README.md             # Documentation
+Simple-To-Do-List-Web-Application/  
+│  
+├── backend/  
+│   ├── server.js         # Node.js backend  
+│   └── package.json      # Backend dependencies  
+│  
+├── frontend/  
+│   ├── index.html        # HTML file for the frontend  
+│   ├── style.css         # Stylesheet  
+│   └── script.js         # JavaScript for UI interactions  
+│   │  
+│   └── images/  
+│         └── black-backgroundImage.jpg       # Background image  
+│  
+└── README.md             # Documentation  
+  
 
-
-Author
-Pamith Pasandul
+Author  
+Pamith Pasandul  
 GitHub: https://github.com/Pasandul2
 
