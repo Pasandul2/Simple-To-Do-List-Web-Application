@@ -14,23 +14,33 @@ let idCounter = 1;
 
 // API Endpoints
 
-// GET /tasks - Retrieve all tasks
+// GET tasks - Retrieve all tasks
 app.get("/tasks", (req, res) => {
     res.json(tasks);
 });
 
-// POST /tasks - Add a new task
+// POST tasks - Add a new task
 app.post("/tasks", (req, res) => {
     const { title, description } = req.body;
-    if (!title || !description) {
-        return res.status(400).json({ error: "Title and description are required." });
+   
+    if (!title) {
+        return res.status(400).json({ error: "Title is required." });
     }
-    const newTask = { id: idCounter++, title, description, completed: false };
+
+    // Create the new task object
+    const newTask = { 
+        id: idCounter++, 
+        title, 
+        description: description || "",  
+        completed: false 
+    };
+
     tasks.push(newTask);
     res.status(201).json(newTask);
 });
 
-// DELETE /tasks/:id - Delete a task by ID
+
+// DELETE tasks/:id - Delete a task by ID
 app.delete("/tasks/:id", (req, res) => {
     const taskId = parseInt(req.params.id, 10);
     const taskIndex = tasks.findIndex((task) => task.id === taskId);
@@ -43,7 +53,7 @@ app.delete("/tasks/:id", (req, res) => {
     res.status(200).json({ message: "Task deleted successfully." });
 });
 
-// PUT /tasks/:id - Update the completion status of a task
+// PUT tasks/:id - Update the completion status of a task
 app.put("/tasks/:id", (req, res) => {
     const taskId = parseInt(req.params.id, 10);
     const { title, description ,completed } = req.body;

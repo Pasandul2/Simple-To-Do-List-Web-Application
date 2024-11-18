@@ -19,7 +19,7 @@ function showFeedback(message, type) {
 
     setTimeout(() => {
         feedback.classList.remove("show");
-    }, 2000); // Display feedback for 2 seconds
+    }, 2000); 
 }
 
 // Open Popup
@@ -29,6 +29,8 @@ function openPopup(title, task = null) {
     taskDescription.value = task?.description || "";
     editingTask = task;
     taskPopup.classList.remove("hidden");
+    taskTitle.focus();
+
 }
 
 // Close Popup
@@ -46,7 +48,7 @@ async function fetchTasks() {
             throw new Error("Failed to fetch tasks");
         }
         const tasks = await response.json();
-        taskList.innerHTML = ""; // Clear current list
+        taskList.innerHTML = ""; 
         tasks.forEach((task) => {
             const taskElement = createTaskElement(task);
             task.element = taskElement;
@@ -82,7 +84,7 @@ async function deleteTaskFromServer(id) {
     }
 }
 
-// Update task details or completion status via the backend
+// Update task details via the backend
 async function updateTask(task) {
     const response = await fetch(`${apiBaseUrl}/${task.id}`, {
         method: "PUT",
@@ -118,6 +120,7 @@ function createTaskElement(task) {
         li.classList.toggle("completed", task.completed);
         editButton.style.display = checkbox.checked ? "none" : "inline-block";
         deleteButton.style.backgroundColor = task.completed ? "#ff6666" : "";
+
         try {
             await updateTask(task);
             showFeedback(
@@ -130,7 +133,7 @@ function createTaskElement(task) {
     });
 
     taskInfo.innerHTML = `<strong class="task-title">${task.title}</strong><br><span class="task-desc">${task.description}</span>`;
-    taskInfo.style.flex = "1";
+    taskInfo.classList.add("task-info");
 
     editButton.textContent = "Edit";
     editButton.classList.add("btn");
@@ -191,11 +194,9 @@ taskForm.addEventListener("submit", async (e) => {
     closePopup();
 });
 
-// Add Task Button Click Handler
+
 addTaskButton.addEventListener("click", () => openPopup("Add Task"));
 
-// Cancel Button Click Handler
 cancelButton.addEventListener("click", closePopup);
 
-// Load tasks on page load
 document.addEventListener("DOMContentLoaded", fetchTasks);
